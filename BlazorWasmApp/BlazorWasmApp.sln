@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.32804.182
+MinimumVisualStudioVersion = 16.0.0.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWasmApp", "BlazorWasmApp.csproj", "{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Debug|x64.Build.0 = Debug|Any CPU
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Debug|x86.Build.0 = Debug|Any CPU
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Release|x64.ActiveCfg = Release|Any CPU
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Release|x64.Build.0 = Release|Any CPU
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Release|x86.ActiveCfg = Release|Any CPU
+		{4E772ED3-DEA4-4692-90D1-F9A1A9E8553F}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3AA047F6-7009-47AD-9247-857D445DC02D}
+	EndGlobalSection
+EndGlobal
