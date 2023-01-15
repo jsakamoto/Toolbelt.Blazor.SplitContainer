@@ -1,2 +1,6 @@
+v.1.1.0
+- Improve: Add support for touch operation.
+- Fix: It only works well when the zoom level is 100%.
+
 v.1.0.0
 - 1st release.

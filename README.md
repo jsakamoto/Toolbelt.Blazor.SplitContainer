@@ -146,7 +146,7 @@ Please refer to the following example if you want to save and restore the pane s
 
 ### Change the size of the splitter bar
 
-The size of the splitter bar is defined by the CSS custom property named `--splitter-bar-size` scoped in the `split-container` CSS class. So you can change the size of the splitter bar by overriding that CSS custom property value like the following example.
+The size of the splitter bar is defined by the CSS custom property named `--splitter-bar-size` scoped in the `split-container` CSS class (The default value is '4px'). So you can change the size of the splitter bar by overriding that CSS custom property value like the following example.
 
 ```css
 ::deep .split-container {

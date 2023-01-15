@@ -6,6 +6,8 @@ const enum Direction {
 const pointerdown = "pointerdown";
 const pointermove = "pointermove";
 const pointerup = "pointerup";
+const touchstart = "touchstart";
+const NULL = null;
 
 interface DotNetObjectRef {
     invokeMethodAsync(methodName: string, ...args: any[]): Promise<any>
@@ -18,19 +20,19 @@ export const attach = (component: DotNetObjectRef, container: HTMLElement) => {
         pivot: 0,
         initSize: 0,
         disposed: false,
-        dispose: null as any
+        dispose: NULL as any
     };
     const spliter = container.querySelector(".spliter-bar")! as HTMLElement;
     const panes = Array.from(container.querySelectorAll(".pane-of-split-container")) as HTMLElement[];
 
     const round = Math.round;
 
-    const getPos = (dir: Direction, ev: PointerEvent): number => round(dir === Direction.Horizontal ? ev.screenX : ev.screenY);
+    const getPos = (dir: Direction, ev: PointerEvent): number => round(dir === Direction.Horizontal ? ev.clientX : ev.clientY);
 
     const getSize = (dir: Direction, targetPaneIndex: number): number => round(((rect: DOMRect) => dir === Direction.Horizontal ? rect.width : rect.height)(panes[targetPaneIndex].getBoundingClientRect()));
 
-    const addEventListener = (element: HTMLElement, event: string, callback: Function) => {
-        element.addEventListener(event as any, callback as any);
+    const addEventListener = (element: HTMLElement, event: string, callback: Function, options?: AddEventListenerOptions) => {
+        element.addEventListener(event as any, callback as any, options);
     }
 
     const removeEventListener = (element: HTMLElement, event: string, callback: Function) => {
@@ -39,8 +41,8 @@ export const attach = (component: DotNetObjectRef, container: HTMLElement) => {
 
     const updateSize = (ev: PointerEvent): [HTMLElement | null, number] => {
         const targetPaneIndex = state.resizeTarget;
-        const resizeTarget = panes[targetPaneIndex] || null;
-        if (resizeTarget === null) return [null, 0];
+        const resizeTarget = panes[targetPaneIndex] || NULL;
+        if (resizeTarget === NULL) return [NULL, 0];
 
         const resizeTargetStyle = resizeTarget.style;
         const dir = state.dir;
@@ -78,14 +80,18 @@ export const attach = (component: DotNetObjectRef, container: HTMLElement) => {
         component.invokeMethodAsync("UpdateSize", resizeTarget === panes[0], nextSize);
     }
 
+    const preventDefault = (ev: TouchEvent): void => ev.preventDefault();
+
     addEventListener(spliter, pointerdown, onPointerDown);
     addEventListener(spliter, pointerup, onPointerUp);
+    addEventListener(spliter, touchstart, preventDefault, { passive: false });
 
     state.dispose = () => {
         if (state.disposed) return;
         state.disposed = true;
         removeEventListener(spliter, pointerdown, onPointerDown);
         removeEventListener(spliter, pointerup, onPointerUp);
+        removeEventListener(spliter, touchstart, preventDefault);
     };
     return state;
 }
