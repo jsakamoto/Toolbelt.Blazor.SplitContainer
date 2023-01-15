@@ -4,7 +4,9 @@
 
 A Blazor component to create panes separated by a slidable splitter bar.
 
-![movie](https://raw.githubusercontent.com/jsakamoto/Toolbelt.Blazor.SplitContainer/main/.assets/movie-001.gif)
+[![movie](https://raw.githubusercontent.com/jsakamoto/Toolbelt.Blazor.SplitContainer/main/.assets/movie-001.gif)](https://jsakamoto.github.io/Toolbelt.Blazor.SplitContainer/)
+
+- [Live Demo](https://jsakamoto.github.io/Toolbelt.Blazor.SplitContainer/)
 
 > **Note**  
 > I know the same feature component library, the ["BlazorSliders"](https://github.com/carlfranklin/BlazorSliders), already exists, but it was a bit unsmooth, particularly on Blazor Server apps. So I've decided to create another one on my hand.
