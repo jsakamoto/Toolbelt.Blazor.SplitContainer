@@ -58,7 +58,7 @@
     /// Determines the minimum distance of pixels of the splitter from the left or the top edge of first pane.
     /// </summary>
     [Parameter]
-    public int? FirstPaneMinSize { get; set; }
+    public string? FirstPaneMinSize { get; set; }
 
     /// <summary>
     /// Determines pixel distance of the splitter from the left or top edge.<br/>
@@ -66,19 +66,19 @@
     /// If you specify both the <see cref="FirstPaneSize"/> or the <see cref="SecondPaneSize"/> parameters, then the splitter won't work.
     /// </summary>
     [Parameter]
-    public int? FirstPaneSize { get; set; }
+    public string? FirstPaneSize { get; set; }
 
     /// <summary>
     /// A callback that will be invoked when the size of the first pane is changed.
     /// </summary>
     [Parameter]
-    public EventCallback<int> FirstPaneSizeChanged { get; set; }
+    public EventCallback<string> FirstPaneSizeChanged { get; set; }
 
     /// <summary>
     /// Determines the minimum distance of pixels of the splitter from the right or the bottom edge of second pane.
     /// </summary>
     [Parameter]
-    public int? SecondPaneMinSize { get; set; }
+    public string? SecondPaneMinSize { get; set; }
 
     /// <summary>
     /// Determines pixel distance of the splitter from the right or bottom edge.<br/>
@@ -86,13 +86,13 @@
     /// If you specify both the <see cref="FirstPaneSize"/> or the <see cref="SecondPaneSize"/> parameters, then the splitter won't work.
     /// </summary>
     [Parameter]
-    public int? SecondPaneSize { get; set; }
+    public string? SecondPaneSize { get; set; }
 
     /// <summary>
     /// A callback that will be invoked when the size of the second pane is changed.
     /// </summary>
     [Parameter]
-    public EventCallback<int> SecondPaneSizeChanged { get; set; }
+    public EventCallback<string> SecondPaneSizeChanged { get; set; }
 
     private DotNetObjectReference<SplitContainer>? _ThisRef;
 
@@ -111,11 +111,56 @@
         this._Module = new(async () => await this.JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Toolbelt.Blazor.SplitContainer/script.min.js"));
     }
 
-    private string GetPaneStyle(int? paneSize, int? minPaneSize)
+    private (int? size, string? unit) ValidateSize(string? size)
     {
+        string allowedUnits = "px em vh vw";
+
+        if (string.IsNullOrWhiteSpace(size)) return (null, null);
+
+        string unit;
+        int actualSize;
+
+        size = size.Trim().ToLowerInvariant();
+        if (size.EndsWith("%"))
+            unit = "%";
+        else if (size.EndsWith("rem"))
+        {
+            unit = "rem";
+        }
+        else
+        {
+            if(size.Length==1 )
+            {
+                if(!int.TryParse(size, out actualSize))
+                    throw new ArgumentException($"Size value must be integer value and having allowed types {allowedUnits}");
+                return (actualSize, "px");
+            }
+
+            unit = size.Substring(size.Length - 2);
+            if (int.TryParse(unit, out actualSize))
+                unit = "px";
+
+            if (!allowedUnits.Contains(unit))
+                throw new ArgumentException($"Invalid Size type. Allowed Size types are {allowedUnits}");
+        }
+
+        var sizeValue = size.Replace(unit, "").Trim();
+        if (!int.TryParse(sizeValue, out actualSize))
+        {
+            throw new ArgumentException($"Size value must be integer value and having allowed types {allowedUnits}");
+        }
+
+        return (actualSize, unit);
+    }
+
+    private string GetPaneStyle(string? paneSize, string? minPaneSize)
+    {
+        var actualSize =  ValidateSize(paneSize);
+        var minSize = ValidateSize(minPaneSize);
+
         var styleKey = (this.Orientation == SplitterOrientation.Vertical ? "width:" : "height:");
-        return (minPaneSize.HasValue ? "min-" + styleKey + minPaneSize + "px;" : "") +
-            (paneSize.HasValue ? styleKey + paneSize + "px;" : "flex:1;");
+        return (minSize.size.HasValue ? $"min-{styleKey}{minSize.size}{minSize.unit};" : "") +
+            (actualSize.size.HasValue ? $"{styleKey}{actualSize.size}{actualSize.unit};" : "flex:1;");
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -133,7 +178,7 @@
     {
         // Console.WriteLine($"UpdateSize = isFirstPane: {isFirstPane},  {nextSize}");
         var eventCallback = isFirstPane ? this.FirstPaneSizeChanged : this.SecondPaneSizeChanged;
-        await eventCallback.InvokeAsync(nextSize);
+        await eventCallback.InvokeAsync(nextSize.ToString());
     }
 
     public async ValueTask DisposeAsync()
