@@ -6,8 +6,8 @@
         <SplitContainer Id="split-container-1"
                         Orientation="this._Orientation"
                         Style="width:570px; height:280px;"
-                        FirstPaneMinSize="15 em" 
-                        SecondPaneMinSize="15 em"
+                        FirstPaneMinSize="15%" 
+                        SecondPaneMinSize="15%"
         @bind-FirstPaneSize="_PaneSize"
         @bind-FirstPaneSize:after="OnPaneSizeChanged">
 
@@ -55,11 +55,11 @@
 {
     private SplitterOrientation _Orientation = SplitterOrientation.Vertical;
 
-    private string _PaneSize = "30em";
+    private string _PaneSize = "30%";
 
-    private string _HorizontalPaneSize = "10em";
+    private string _HorizontalPaneSize = "10%";
 
-    private string _VerticalPaneSize = "10em";
+    private string _VerticalPaneSize = "10%";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
