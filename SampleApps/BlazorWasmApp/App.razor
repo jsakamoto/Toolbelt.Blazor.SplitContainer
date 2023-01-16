@@ -6,8 +6,8 @@
         <SplitContainer Id="split-container-1"
                         Orientation="this._Orientation"
                         Style="width:570px; height:280px;"
-                        FirstPaneMinSize="80"
-                        SecondPaneMinSize="80"
+                        FirstPaneMinSize="15 em" 
+                        SecondPaneMinSize="15 em"
         @bind-FirstPaneSize="_PaneSize"
         @bind-FirstPaneSize:after="OnPaneSizeChanged">
 
@@ -55,19 +55,19 @@
 {
     private SplitterOrientation _Orientation = SplitterOrientation.Vertical;
 
-    private int _PaneSize = 256;
+    private string _PaneSize = "30em";
 
-    private int _HorizontalPaneSize = 256;
+    private string _HorizontalPaneSize = "10em";
 
-    private int _VerticalPaneSize = 128;
+    private string _VerticalPaneSize = "10em";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             if (Enum.TryParse<SplitterOrientation>(await this.LocalStorage.GetItemAsStringAsync("_Orientation"), out var dir)) this._Orientation = dir;
-            if (int.TryParse(await this.LocalStorage.GetItemAsStringAsync("_HorizontalPaneSize"), out var horizontalPaneSize)) this._HorizontalPaneSize = horizontalPaneSize;
-            if (int.TryParse(await this.LocalStorage.GetItemAsStringAsync("_VerticalPaneSize"), out var verticalPaneSize)) this._VerticalPaneSize = verticalPaneSize;
+            if (int.TryParse(await this.LocalStorage.GetItemAsStringAsync("_HorizontalPaneSize"), out var horizontalPaneSize)) this._HorizontalPaneSize = horizontalPaneSize.ToString();
+            if (int.TryParse(await this.LocalStorage.GetItemAsStringAsync("_VerticalPaneSize"), out var verticalPaneSize)) this._VerticalPaneSize = verticalPaneSize.ToString();
             this._PaneSize = this._Orientation == SplitterOrientation.Vertical ? this._HorizontalPaneSize : this._VerticalPaneSize;
             this.StateHasChanged();
         }
@@ -84,8 +84,8 @@
             _VerticalPaneSize = _PaneSize;
         }
 
-        await this.LocalStorage.SetItemAsStringAsync("_HorizontalPaneSize", _HorizontalPaneSize.ToString());
-        await this.LocalStorage.SetItemAsStringAsync("_VerticalPaneSize", _VerticalPaneSize.ToString());
+        await this.LocalStorage.SetItemAsStringAsync("_HorizontalPaneSize", _HorizontalPaneSize);
+        await this.LocalStorage.SetItemAsStringAsync("_VerticalPaneSize", _VerticalPaneSize);
     }
 
     private async Task ToggleOrientation()
