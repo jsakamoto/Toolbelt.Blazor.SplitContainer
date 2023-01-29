@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <!--<ProjectReference Include="..\..\SplitContainer\SplitContainer.csproj" />-->
-    <PackageReference Include="Toolbelt.Blazor.SplitContainer" Version="1.1.0" />
+    <PackageReference Include="Toolbelt.Blazor.SplitContainer" Version="1.1.1" />
   </ItemGroup>
 
 </Project>

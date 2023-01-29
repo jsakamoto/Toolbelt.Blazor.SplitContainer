@@ -1,3 +1,6 @@
+v.1.1.1
+- Fix: Nested SplitContainers didn't work correctly in some cases.
+
 v.1.1.0
 - Improve: Add support for touch operation.
 - Fix: It only works well when the zoom level is 100%.

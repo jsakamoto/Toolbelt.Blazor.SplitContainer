@@ -22,8 +22,8 @@ export const attach = (component: DotNetObjectRef, container: HTMLElement) => {
         disposed: false,
         dispose: NULL as any
     };
-    const spliter = container.querySelector(".spliter-bar")! as HTMLElement;
-    const panes = Array.from(container.querySelectorAll(".pane-of-split-container")) as HTMLElement[];
+    const spliter = container.querySelector(":scope > .spliter-bar")! as HTMLElement;
+    const panes = Array.from(container.querySelectorAll(":scope > .pane-of-split-container")) as HTMLElement[];
 
     const round = Math.round;
 

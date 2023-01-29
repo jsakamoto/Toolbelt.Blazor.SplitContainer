@@ -12,8 +12,8 @@ export const attach = (component, container) => {
         disposed: false,
         dispose: NULL
     };
-    const spliter = container.querySelector(".spliter-bar");
-    const panes = Array.from(container.querySelectorAll(".pane-of-split-container"));
+    const spliter = container.querySelector(":scope > .spliter-bar");
+    const panes = Array.from(container.querySelectorAll(":scope > .pane-of-split-container"));
     const round = Math.round;
     const getPos = (dir, ev) => round(dir === 0 ? ev.clientX : ev.clientY);
     const getSize = (dir, targetPaneIndex) => round(((rect) => dir === 0 ? rect.width : rect.height)(panes[targetPaneIndex].getBoundingClientRect()));
