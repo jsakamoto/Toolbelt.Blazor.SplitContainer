@@ -45,7 +45,7 @@ dotnet add package Toolbelt.Blazor.SplitContainer
 </SplitContainer>
 
 @code {
-    private int _PnaeSize = 80;
+    private int _PaneSize = 80;
 }
 ```
 
@@ -98,7 +98,7 @@ I strongly recommend binding a pane size parameter to a field variable, like the
 </SplitContainer>
 
 @code {
-    private int _PnaeSize = 80;
+    private int _PaneSize = 80;
 }
 ```
 
@@ -125,7 +125,7 @@ Please refer to the following example if you want to save and restore the pane s
 </SplitContainer>
 
 @code {
-  private int _PnaeSize = 80;
+  private int _PaneSize = 80;
 
   protected override async Task OnAfterRenderAsync(bool firstRender)
   {
