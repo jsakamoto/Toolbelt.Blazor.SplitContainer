@@ -1,0 +1,26 @@
+@import '_content/Toolbelt.Blazor.SplitContainer/Toolbelt.Blazor.SplitContainer.bundle.scp.css';
+
+/* /App.razor.rz.scp.css */
+h1[b-km8u0hlhwz] {
+    margin: 0 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+[b-km8u0hlhwz] .split-container {
+    --splitter-bar-size: 14px;
+}
+
+[b-km8u0hlhwz] .pane-of-split-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+[b-km8u0hlhwz] #split-container-1 .pane-of-split-container,
+[b-km8u0hlhwz] #split-container-2 .pane-of-split-container:first-of-type,
+[b-km8u0hlhwz] #split-container-2 .pane-of-split-container:last-of-type .pane-of-split-container:last-of-type {
+    border: dashed 2px blueviolet;
+}
