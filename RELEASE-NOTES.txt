@@ -1,3 +1,6 @@
+v.1.1.2
+- Fix: Typo in the README document.
+
 v.1.1.1
 - Fix: Nested SplitContainers didn't work correctly in some cases.
 
