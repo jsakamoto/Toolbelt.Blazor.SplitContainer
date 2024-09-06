@@ -30,6 +30,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="SplitContainer.Test" />
     <SupportedPlatform Include="browser" />
     <Content Update="tsconfig.json" Pack="false" />
     <Content Remove="bundleconfig.json" />

@@ -1,0 +1,31 @@
+.split-container {
+    --splitter-bar-size: 4px;
+    display: flex;
+
+    &.splitter-orientation-vertical {
+        flex-direction: row;
+    }
+
+    &.splitter-orientation-horizontal {
+        flex-direction: column;
+    }
+
+    .pane-of-split-container {
+        position: relative;
+        overflow: auto;
+    }
+}
+
+.spliter-bar {
+    user-select: none;
+
+    .splitter-orientation-vertical & {
+        min-width: var(--splitter-bar-size);
+        cursor: w-resize;
+    }
+
+    .splitter-orientation-horizontal & {
+        min-height: var(--splitter-bar-size);
+        cursor: n-resize;
+    }
+}
