@@ -134,8 +134,16 @@
     {
         if (firstRender)
         {
+            var scriptPath = "./_content/Toolbelt.Blazor.SplitContainer/script.min.js";
+            try
+            {
+                var isOnLine = await JSRuntime.InvokeAsync<bool>("Toolbelt.Blazor.getProperty", "navigator.onLine");
+                if (isOnLine) scriptPath += "?v=" + VersionInfo.VersionText;
+            }
+            catch (JSException) { }
+
             this._ThisRef = DotNetObjectReference.Create(this);
-            await using var module = await this.JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Toolbelt.Blazor.SplitContainer/script.min.js");
+            await using var module = await this.JSRuntime.InvokeAsync<IJSObjectReference>("import", scriptPath);
             this._Handler = await module.InvokeAsync<IJSObjectReference>("attach", this._ThisRef, this._ContainerElementRef);
         }
     }
