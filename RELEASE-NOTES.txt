@@ -1,3 +1,6 @@
+v.2.0.0
+Improve: Add support "%" for the unit of size.
+
 v.1.1.2.1
 Improve README - mentioned the CSS isolation
 

@@ -1,4 +1,4 @@
-﻿# Blazor SplitContainer [![NuGet Package](https://img.shields.io/nuget/v/Toolbelt.Blazor.SplitContainer.svg)](https://www.nuget.org/packages/Toolbelt.Blazor.SplitContainer/)
+﻿# Blazor SplitContainer [![NuGet Package](https://img.shields.io/nuget/v/Toolbelt.Blazor.SplitContainer.svg)](https://www.nuget.org/packages/Toolbelt.Blazor.SplitContainer/) [![Discord](https://img.shields.io/discord/798312431893348414?style=flat&logo=discord&logoColor=white&label=Blazor%20Community&labelColor=5865f2&color=gray)](https://discord.com/channels/798312431893348414/1202165955900473375)
 
 ## Summary
 
@@ -21,12 +21,12 @@ A Blazor component to create panes separated by a slidable splitter bar.
 dotnet add package Toolbelt.Blazor.SplitContainer
 ```
 
-3. Open `Toolbelt.Blazor.Splitter` namespace in `_Imports.razor` file.
+3. Open `Toolbelt.Blazor.Splitter.V2` namespace in `_Imports.razor` file.
 
 ```razor
 @* This is "_Imports.razor" *@
 ...
-@using Toolbelt.Blazor.Splitter
+@using Toolbelt.Blazor.Splitter.V2
 ```
 
 4. Then you can use the `SplitContainer` component in your Blazor app.
@@ -84,18 +84,20 @@ See also: https://learn.microsoft.com/aspnet/core/blazor/components/css-isolatio
 
  Parameter Name       |  Type               | Description
 ----------------------|---------------------|--------------
-Id                    | string?             | Gets or sets an id string applied for the "id" attribute of the split container element.
-Style                 | string?             | Gets or sets a CSS style string applied for the "style" attribute of the split container element.
-Class                 | string?             | Gets or sets a CSS class string applied for the "class" attribute of the split container element.
-FirstPane             | RenderFragment      | The left or top pane in the SplitContainer.
-SecondPane            | RenderFragment      | The right or bottom pane in the SplitContainer.
-Orientation           | SplitterOrientation | Determines if the spliter is vertical or horizontal. The default value is `SplitterOrientation.Vertical`.
-FirstPaneSize         | int?                | Determines pixel distance of the splitter from the left or top edge.
-FirstPaneMinSize      | int?                | Determines the minimum distance of pixels of the splitter from the left or the top edge of first pane.
-SecondPaneSize        | int?                | Determines pixel distance of the splitter from the right or bottom edge.
-SecondPaneMinSize     | int?                | Determines the minimum distance of pixels of the splitter from the right or the bottom edge of second pane.
-FirstPaneSizeChanged  | EventCallback<int>  | A callback that will be invoked when the size of the first pane is changed.
-SecondPaneSizeChanged | EventCallback<int>  | A callback that will be invoked when the size of the second pane is changed.
+TSize                 | `Type`                | The type of the size value of the panes. It can be `int`, `double`, etc. This is the type parameter for the `SplitContainer` component. You don't have to specify this type parameter explicitly as long as it can be inferred from the other parameters.
+Id                    | `string?`             | Gets or sets an id string applied for the "id" attribute of the split container element.
+Style                 | `string?`             | Gets or sets a CSS style string applied for the "style" attribute of the split container element.
+Class                 | `string?`             | Gets or sets a CSS class string applied for the "class" attribute of the split container element.
+FirstPane             | `RenderFragment`      | The left or top pane in the SplitContainer.
+SecondPane            | `RenderFragment`      | The right or bottom pane in the SplitContainer.
+Orientation           | `SplitterOrientation` | Determines if the spliter is vertical or horizontal. The default value is `SplitterOrientation.Vertical`.
+UnitOfPaneSize        | `UnitOfPaneSize`        | Determines the unit of the pane size whether it is `Pixel` or `Percent`. The default value is `UnitOfPaneSize.Pixel`.
+FirstPaneSize         | `TSize?`                | Determines distance of the splitter from the left or top edge.
+FirstPaneMinSize      | `TSize?`                | Determines the minimum distance of the splitter from the left or the top edge of first pane.
+SecondPaneSize        | `TSize?`                | Determines distance of the splitter from the right or bottom edge.
+SecondPaneMinSize     | `TSize?`                | Determines the minimum distance of the splitter from the right or the bottom edge of second pane.
+FirstPaneSizeChanged  | `EventCallback<TSize>`  | A callback that will be invoked when the size of the first pane is changed.
+SecondPaneSizeChanged | `EventCallback<TSize>`  | A callback that will be invoked when the size of the second pane is changed.
 
 > **Warning**  
 > You can specify the pane size to only either the `FirstPaneSize` or the `SecondPaneSize` parameter. If you specify both the `FirstPaneSize` or the `SecondPaneSize` parameters, then the splitter won't work.
