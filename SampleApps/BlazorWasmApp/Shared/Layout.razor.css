@@ -1,0 +1,56 @@
+﻿* {
+    --main-content-width: 580px;
+}
+
+header {
+    max-width: var(--main-content-width);
+    margin: auto auto 32px auto;
+}
+
+    header nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+        header nav ul li {
+            margin: 0;
+            padding: 0;
+        }
+
+            header nav ul li ::deep a.active {
+                border-bottom: 2px solid var(--links);
+            }
+
+main {
+    position: relative;
+    max-width: var(--main-content-width);
+    margin: auto;
+}
+
+::deep h1 {
+    margin: 0 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+::deep .split-container {
+    --splitter-bar-size: 14px;
+}
+
+::deep .pane-of-split-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+::deep #split-container-1 .pane-of-split-container,
+::deep #split-container-2 .pane-of-split-container:first-of-type,
+::deep #split-container-2 .pane-of-split-container:last-of-type .pane-of-split-container:last-of-type,
+::deep #split-container-3 .pane-of-split-container {
+    border: dashed 2px blueviolet;
+}

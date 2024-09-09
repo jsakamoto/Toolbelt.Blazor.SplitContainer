@@ -1,11 +1,8 @@
-﻿using System.ComponentModel;
-
-namespace Toolbelt.Blazor.Splitter;
+﻿namespace Toolbelt.Blazor.Splitter.V2;
 
 /// <summary>
 /// Specifies the orientation of the spliter.
 /// </summary>
-[Obsolete("Use the one in the Toolbelt.Blazor.Splitter.V2 namespace instead."), EditorBrowsable(EditorBrowsableState.Never)]
 public enum SplitterOrientation
 {
     /// <summary>

@@ -1,0 +1,27 @@
+﻿@page "/example2"
+
+<h2>Nesting</h2>
+
+<SplitContainer TSize="int" Id="split-container-2" Orientation="SplitterOrientation.Vertical" Style="width:100%; height:400px;" FirstPaneSize="128" FirstPaneMinSize="80" SecondPaneMinSize="80">
+    <FirstPane>
+        <h1>Blazor</h1>
+    </FirstPane>
+
+    <SecondPane>
+        <SplitContainer TSize="int" Orientation="SplitterOrientation.Horizontal" Style="width:100%; height:100%;" SecondPaneSize="128" FirstPaneMinSize="80" SecondPaneMinSize="80">
+            <FirstPane>
+                <h1>Split</h1>
+            </FirstPane>
+
+            <SecondPane>
+                <h1>Container</h1>
+            </SecondPane>
+
+        </SplitContainer>
+    </SecondPane>
+
+</SplitContainer>
+
+@code {
+
+}

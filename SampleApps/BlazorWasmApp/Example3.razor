@@ -1,0 +1,25 @@
+﻿@page "/example3"
+
+<h2>Percentage</h2>
+
+<SplitContainer Id="split-container-3"
+                Style="width:100%; height:280px;"
+                UnitOfPaneSize="UnitOfPaneSize.Percent"
+                FirstPaneMinSize="10"
+                SecondPaneMinSize="10"
+                @bind-FirstPaneSize="_Container3PaneSize">
+
+    <FirstPane>
+        <h1>@(_Container3PaneSize.ToString("#0"))%</h1>
+    </FirstPane>
+
+    <SecondPane>
+        <h1>@((100.0 - _Container3PaneSize).ToString("#0"))%</h1>
+    </SecondPane>
+
+</SplitContainer>
+
+@code {
+    private double _Container3PaneSize = 50;
+
+}

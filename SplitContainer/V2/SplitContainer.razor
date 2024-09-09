@@ -1,0 +1,172 @@
+@using System.Diagnostics.CodeAnalysis;
+@typeparam TSize where TSize : struct
+@implements IAsyncDisposable
+@inject IJSRuntime JSRuntime
+
+<div @ref="_ContainerElementRef" id="@this.Id" class="split-container splitter-orientation-@(this.Orientation.ToString().ToLower()) @(this.Class)" style="@this.Style" data-unit-of-size="@(UnitOfPaneSize.ToString().ToLower())">
+
+    <div class="pane-of-split-container" style="@this.GetPaneStyle(this.FirstPaneSize, this.FirstPaneMinSize)">
+        @FirstPane
+    </div>
+
+    <div class="spliter-bar" />
+
+    <div class="pane-of-split-container" style="@this.GetPaneStyle(this.SecondPaneSize, this.SecondPaneMinSize)">
+        @SecondPane
+    </div>
+
+</div>
+
+@code
+{
+    /// <summary>
+    /// Gets or sets an id string applied for the "id" attribute of the split container element.
+    /// </summary>
+    [Parameter]
+    public string? Id { get; set; }
+
+    /// <summary>
+    /// Gets or sets a CSS style string applied for the "style" attribute of the split container element.
+    /// </summary>
+    [Parameter]
+    public string? Style { get; set; }
+
+    /// <summary>
+    /// Gets or sets a CSS class string applied for the "class" attribute of the split container element.
+    /// </summary>
+    [Parameter]
+    public string? Class { get; set; }
+
+    /// <summary>
+    /// The left or top pane in the SplitContainer.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? FirstPane { get; set; }
+
+    /// <summary>
+    /// The right or bottom pane in the SplitContainer.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? SecondPane { get; set; }
+
+    /// <summary>
+    /// Determines if the spliter is vertical or horizontal.
+    /// </summary>
+    [Parameter]
+    public SplitterOrientation Orientation { get; set; } = SplitterOrientation.Vertical;
+
+    /// <summary>
+    /// Determines the minimum distance of pixels of the splitter from the left or the top edge of first pane.
+    /// </summary>
+    [Parameter]
+    public TSize? FirstPaneMinSize { get; set; }
+
+    /// <summary>
+    /// Determines pixel distance of the splitter from the left or top edge.<br/>
+    /// You can specify the pane size to only either the <see cref="FirstPaneSize"/> or the <see cref="SecondPaneSize"/> parameter.
+    /// If you specify both the <see cref="FirstPaneSize"/> or the <see cref="SecondPaneSize"/> parameters, then the splitter won't work.
+    /// </summary>
+    [Parameter]
+    public TSize? FirstPaneSize { get; set; }
+
+    /// <summary>
+    /// A callback that will be invoked when the size of the first pane is changed.
+    /// </summary>
+    [Parameter]
+    public EventCallback<TSize> FirstPaneSizeChanged { get; set; }
+
+    /// <summary>
+    /// Determines the minimum distance of pixels of the splitter from the right or the bottom edge of second pane.
+    /// </summary>
+    [Parameter]
+    public TSize? SecondPaneMinSize { get; set; }
+
+    /// <summary>
+    /// Determines pixel distance of the splitter from the right or bottom edge.<br/>
+    /// You can specify the pane size to only either the <see cref="FirstPaneSize"/> or the <see cref="SecondPaneSize"/> parameter.
+    /// If you specify both the <see cref="FirstPaneSize"/> or the <see cref="SecondPaneSize"/> parameters, then the splitter won't work.
+    /// </summary>
+    [Parameter]
+    public TSize? SecondPaneSize { get; set; }
+
+    /// <summary>
+    /// A callback that will be invoked when the size of the second pane is changed.
+    /// </summary>
+    [Parameter]
+    public EventCallback<TSize> SecondPaneSizeChanged { get; set; }
+
+    /// <summary>
+    /// Determines the unit of the pane size. (Default: <see cref="UnitOfPaneSize.Pixel"/>)
+    /// </summary>
+    [Parameter]
+    public UnitOfPaneSize UnitOfPaneSize { get; set; } = UnitOfPaneSize.Pixel;
+
+    private DotNetObjectReference<SplitContainer<TSize>>? _ThisRef;
+
+    private ElementReference _ContainerElementRef;
+
+    private IJSObjectReference? _Handler;
+
+    /// <summary>
+    /// Represents a component consisting of a movable bar that divides a container's display area into two resizable panes.
+    /// </summary>
+    [DynamicDependency(nameof(UpdateSize))]
+    public SplitContainer()
+    {
+    }
+
+    internal string GetPaneStyle(TSize? paneSize, TSize? minPaneSize)
+    {
+        var styleKey = (this.Orientation == SplitterOrientation.Vertical ? "width" : "height");
+        var format = this.UnitOfPaneSize == UnitOfPaneSize.Pixel ?
+            "{0}px;" :
+            "calc({0:0.###}% - calc(var(--splitter-bar-size) / 2));";
+
+        static string GetSizeText(string prefix, string styleKey, string format, TSize? size, string defaultValue)
+        {
+            return size.HasValue ? $"{prefix}{styleKey}:{string.Format(format, size.Value)}" : defaultValue;
+        };
+
+        return GetSizeText("min-", styleKey, format, minPaneSize, "") + GetSizeText("", styleKey, format, paneSize, "flex:1;");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var scriptPath = "./_content/Toolbelt.Blazor.SplitContainer/script.min.js";
+            try
+            {
+                var isOnLine = await JSRuntime.InvokeAsync<bool>("Toolbelt.Blazor.getProperty", "navigator.onLine");
+                if (isOnLine) scriptPath += "?v=" + VersionInfo.VersionText;
+            }
+            catch (JSException) { }
+
+            this._ThisRef = DotNetObjectReference.Create(this);
+            await using var module = await this.JSRuntime.InvokeAsync<IJSObjectReference>("import", scriptPath);
+            this._Handler = await module.InvokeAsync<IJSObjectReference>("attach", this._ThisRef, this._ContainerElementRef);
+        }
+    }
+
+    [JSInvokable(nameof(UpdateSize)), EditorBrowsable(EditorBrowsableState.Never)]
+    public async Task UpdateSize(bool isFirstPane, TSize nextSize)
+    {
+        var eventCallback = isFirstPane ? this.FirstPaneSizeChanged : this.SecondPaneSizeChanged;
+        await eventCallback.InvokeAsync(nextSize);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (this._Handler != null)
+        {
+            try
+            {
+                await this._Handler.InvokeVoidAsync("dispose");
+                await this._Handler.DisposeAsync();
+            }
+            catch (JSDisconnectedException) { }
+        }
+
+        this._ThisRef?.Dispose();
+    }
+}
