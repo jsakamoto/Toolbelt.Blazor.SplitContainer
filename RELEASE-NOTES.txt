@@ -1,4 +1,4 @@
-v.2.0.1
+v.2.0.2
 - Fix: the selector issue for the splitter-bar (#6)
 
 v.2.0.0
