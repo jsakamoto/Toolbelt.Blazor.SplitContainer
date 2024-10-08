@@ -16,11 +16,11 @@
 .spliter-bar {
   user-select: none;
 }
-.splitter-orientation-vertical .spliter-bar {
+.splitter-orientation-vertical > .spliter-bar {
   min-width: var(--splitter-bar-size);
   cursor: w-resize;
 }
-.splitter-orientation-horizontal .spliter-bar {
+.splitter-orientation-horizontal > .spliter-bar {
   min-height: var(--splitter-bar-size);
   cursor: n-resize;
 }

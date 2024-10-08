@@ -19,12 +19,12 @@
 .spliter-bar {
     user-select: none;
 
-    .splitter-orientation-vertical & {
+    .splitter-orientation-vertical > & {
         min-width: var(--splitter-bar-size);
         cursor: w-resize;
     }
 
-    .splitter-orientation-horizontal & {
+    .splitter-orientation-horizontal > & {
         min-height: var(--splitter-bar-size);
         cursor: n-resize;
     }
