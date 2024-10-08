@@ -31,11 +31,22 @@ main {
 }
 
 ::deep h1 {
-    margin: 0 20px;
+    margin: 0;
+    padding: 0 20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    border: dashed 2px blueviolet;
+    position: absolute;
+    inset: 0;
+    text-align: center;
 }
+
+    ::deep h1::before {
+        content: "";
+        display: block;
+        height: calc(50% - 0.8em);
+    }
 
 ::deep .split-container {
     --splitter-bar-size: 14px;
@@ -46,11 +57,4 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-::deep #split-container-1 .pane-of-split-container,
-::deep #split-container-2 .pane-of-split-container:first-of-type,
-::deep #split-container-2 .pane-of-split-container:last-of-type .pane-of-split-container:last-of-type,
-::deep #split-container-3 .pane-of-split-container {
-    border: dashed 2px blueviolet;
 }
