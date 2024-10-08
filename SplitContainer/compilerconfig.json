@@ -2,5 +2,9 @@
   {
     "outputFile": "SplitContainer.razor.css",
     "inputFile": "SplitContainer.razor.scss"
+  },
+  {
+    "outputFile": "V2/SplitContainer.razor.css",
+    "inputFile": "V2/SplitContainer.razor.scss"
   }
 ]
