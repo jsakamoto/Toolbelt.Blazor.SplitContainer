@@ -1,3 +1,6 @@
+v.2.0.1
+- Fix: the selector issue for the splitter-bar (#6)
+
 v.2.0.0
 Improve: Add support "%" for the unit of size.
 
