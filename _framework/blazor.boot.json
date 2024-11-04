@@ -1,0 +1,63 @@
+{
+  "mainAssemblyName": "BlazorWasmApp",
+  "resources": {
+    "hash": "sha256-zL1B6uA4YUOYqwtloAD5oHT61m66zi9tQSyHy/4onq8=",
+    "jsModuleNative": {
+      "dotnet.native.8.0.10.cij6plqil1.js": "sha256-kfWcvlnb2Okopejo8h7AZXkZ3qS3hDsRRiKa9iaBy24="
+    },
+    "jsModuleRuntime": {
+      "dotnet.runtime.8.0.10.1v4nyb1010.js": "sha256-FjrgL9dY6dc2yUoXDWowSfachSgM8O29qUMWDQOJKRI="
+    },
+    "wasmNative": {
+      "dotnet.native.wasm": "sha256-ev+0pHr+j5oWVp9jAcy3mh1OhWaMc8/LFfHbwC/6VBc="
+    },
+    "assembly": {
+      "Blazored.LocalStorage.wasm": "sha256-OaMAAd5n7ORfyur5e3QIyEVKJ76MKIvwbg7/icnnYcU=",
+      "BlazorWasmApp.wasm": "sha256-AI7zVEtgNjfTgS4LtTvWFXfSaF+1Oe0piu9i2DEl6qc=",
+      "Microsoft.AspNetCore.Components.wasm": "sha256-qNNTGYRRnwB+1GOnrVrPc0Day41SSodfhyioVyRuieA=",
+      "Microsoft.AspNetCore.Components.Web.wasm": "sha256-ksgUds5djQkwYni0AAyF34gqaIiQttNYROd91PEpRFE=",
+      "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-Q4gQS+wAI/o1p0ABACPX+vUj06GrNg33CWKIBqv9S0w=",
+      "Microsoft.Extensions.Configuration.Abstractions.wasm": "sha256-87sn2TYqgdZ95sXmavjKEzoEfMgHnYQ9LOvnMX+aZcI=",
+      "Microsoft.Extensions.Configuration.Json.wasm": "sha256-Sxmy2ZS134URxbHEvdbS6NcQ3zXS7UWx/5ZPpwiW7FA=",
+      "Microsoft.Extensions.Configuration.wasm": "sha256-jYqHUZ07UYWc8POk7xhas6xQYH7t1qoTcylqoDqncJk=",
+      "Microsoft.Extensions.DependencyInjection.Abstractions.wasm": "sha256-EXQHLSHqudsAHtfTXGoE//hJsK4poDSqW7ZtjsytfQc=",
+      "Microsoft.Extensions.DependencyInjection.wasm": "sha256-gg8xZqJsBBrrNEyUGzYqhL3sqkuZ4AHAvdTdL9nZ0S0=",
+      "Microsoft.Extensions.Logging.Abstractions.wasm": "sha256-LcaPEaPNm7pFT9kZyDHfXsV4Z9cGFGu7KFdL3o3UQks=",
+      "Microsoft.Extensions.Logging.wasm": "sha256-8BH+kQfjYuZWxprOICXJ4+tU0OdJOYDKN7G0S3zYYHI=",
+      "Microsoft.Extensions.Options.wasm": "sha256-gE1BXyLWVUnQwUrxnkNGo22RSc/PIEaAypz1VWboWP4=",
+      "Microsoft.Extensions.Primitives.wasm": "sha256-6187ynEahDlSLMBvD4vAmiLpZ3clRb5xu6rM7O8AxNo=",
+      "Microsoft.JSInterop.wasm": "sha256-633dDtzjEjlRFHEMs1YAYN+trLczlpkjy7iB9v/9Ebk=",
+      "Microsoft.JSInterop.WebAssembly.wasm": "sha256-sLSiCKh0RQEV/2cl05tr7wOLWzExQfPZovvpqYLJduQ=",
+      "System.Collections.Concurrent.wasm": "sha256-HjG8Quz/H7VhBcp64B362d3crlIBPSFXX6u5O12DrhM=",
+      "System.Collections.wasm": "sha256-KaQyZMWo3UNfc0yqrAiXHgrY/4ReOI6u9BcPbOYJio8=",
+      "System.ComponentModel.wasm": "sha256-i7oMzbElBaNMckR3MYozYJPnC1EgxdAH5/PHd1zevvU=",
+      "System.Console.wasm": "sha256-H0oLZv/16VAt5jbmBxbsWHXee2ZiD66tRAvPRRhsEXw=",
+      "System.Linq.wasm": "sha256-cFaQs2KJCsW03sZQ4eRBYsUOHclzXnk3S76b/zeC/3M=",
+      "System.Memory.wasm": "sha256-BseRKZRihim0QeTCl5s3LZwimskjpAOKEqk0Mv1kbfA=",
+      "System.Net.Http.wasm": "sha256-UCHdL+XnhQo0ga/XqQH/SylPOjXNfhp0ET4yy72Drn4=",
+      "System.Net.Primitives.wasm": "sha256-cqxNuERyW6tEVghDmThKYi9Lq5z12psifo2jnPaSNJQ=",
+      "System.Private.CoreLib.wasm": "sha256-x//cLEnyAtmJTSwNC9i/k/Zgz2KCHh9sv9WlNUdUxrc=",
+      "System.Private.Uri.wasm": "sha256-DaBKlwFytrw88o/IV9Gc2IicOr81uLHnjjJ4qpjwIIo=",
+      "System.Runtime.InteropServices.JavaScript.wasm": "sha256-4Gi//PDDYjTp35qEywUmv7ZPBIb4hFRwdZgq0P79/bA=",
+      "System.Runtime.wasm": "sha256-1bQPdmBXJtkQf8YNXn5G6O1hrb5uf5mRRNXltmTDz2g=",
+      "System.Text.Encodings.Web.wasm": "sha256-hmEqWvCZQnS2F8DAjTdmesIMijXij07DuFxe0SVocRQ=",
+      "System.Text.Json.wasm": "sha256-B+c4ikAwfzwKz9343e3hJI6xG2JYzHMwF0PWZl6DuoY=",
+      "System.Text.RegularExpressions.wasm": "sha256-+4//UcYybeT2oSGLl/K8ELvfwOUNKfkKFPWB5aDX1mM=",
+      "System.Threading.wasm": "sha256-942pSKu/NRclDZZvbRxDycMEL2PUdLwiP0/0qw8+lJY=",
+      "Toolbelt.Blazor.SplitContainer.wasm": "sha256-M57yvIqk2EHqFF9LBJyD7bl41LG6aFtN8gR1KLPZl0A="
+    },
+    "libraryInitializers": {
+      "_content/Toolbelt.Blazor.GetProperty.Script/Toolbelt.Blazor.GetProperty.Script.lib.module.js": "sha256-rN9ebccf1yzi+bWyyip51JJuAKONWUHDBKWnKUpDWAA="
+    },
+    "modulesAfterRuntimeReady": {
+      "../_content/Toolbelt.Blazor.GetProperty.Script/Toolbelt.Blazor.GetProperty.Script.lib.module.js": "sha256-rN9ebccf1yzi+bWyyip51JJuAKONWUHDBKWnKUpDWAA="
+    }
+  },
+  "cacheBootResources": true,
+  "debugLevel": 0,
+  "linkerEnabled": true,
+  "globalizationMode": "invariant",
+  "extensions": {
+    "blazor": {}
+  }
+}

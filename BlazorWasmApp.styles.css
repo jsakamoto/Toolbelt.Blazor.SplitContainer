@@ -1,0 +1,60 @@
+@import '_content/Toolbelt.Blazor.SplitContainer/Toolbelt.Blazor.SplitContainer.bundle.scp.css';
+
+/* /Shared/Layout.razor.rz.scp.css */
+*[b-2qj4rdwbey] {
+    --main-content-width: 580px;
+}
+
+header[b-2qj4rdwbey] {
+    max-width: var(--main-content-width);
+    margin: auto auto 32px auto;
+}
+
+    header nav ul[b-2qj4rdwbey] {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+        header nav ul li[b-2qj4rdwbey] {
+            margin: 0;
+            padding: 0;
+        }
+
+            header nav ul li[b-2qj4rdwbey]  a.active {
+                border-bottom: 2px solid var(--links);
+            }
+
+main[b-2qj4rdwbey] {
+    position: relative;
+    max-width: var(--main-content-width);
+    margin: auto;
+}
+
+[b-2qj4rdwbey] h1 {
+    margin: 0;
+    padding: 0 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    --border-size: 2px;
+    border: dashed var(--border-size) blueviolet;
+    position: absolute;
+    inset: 0;
+    text-align: center;
+    line-height: calc(100cqh - (var(--border-size) * 2));
+}
+
+[b-2qj4rdwbey] .split-container {
+    --splitter-bar-size: 14px;
+}
+
+[b-2qj4rdwbey] .pane-of-split-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    container-type: size;
+}
