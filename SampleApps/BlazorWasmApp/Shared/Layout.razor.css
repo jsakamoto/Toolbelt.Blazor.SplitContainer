@@ -36,17 +36,13 @@ main {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    border: dashed 2px blueviolet;
+    --border-size: 2px;
+    border: dashed var(--border-size) blueviolet;
     position: absolute;
     inset: 0;
     text-align: center;
+    line-height: calc(100cqh - (var(--border-size) * 2));
 }
-
-    ::deep h1::before {
-        content: "";
-        display: block;
-        height: calc(50% - 0.8em);
-    }
 
 ::deep .split-container {
     --splitter-bar-size: 14px;
@@ -57,4 +53,5 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    container-type: size;
 }
