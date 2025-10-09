@@ -96,7 +96,7 @@ export const attach = (component: DotNetObjectRef, container: HTMLElement) => {
         state[Props.Dir] = container.classList.contains("splitter-orientation-vertical") ? Direction.Horizontal : Direction.Virtical;
         state[Props.TargetPaneIndex] = targetPaneIndex;
         state[Props.PivotPos] = getPos(ev);
-        state[Props.InitSize] = getSizeOfPane(targetPaneIndex);
+        state[Props.InitSize] = Math.max(0, getSizeOfPane(targetPaneIndex)) as Size;
         state[Props.Unit] = container.dataset.unitOfSize === "percent" ? UnitOfSize.Percent : UnitOfSize.Pixel;
         addEventListenerToSplitter(pointermove, onPointerMove);
         splitter.setPointerCapture(ev.pointerId);

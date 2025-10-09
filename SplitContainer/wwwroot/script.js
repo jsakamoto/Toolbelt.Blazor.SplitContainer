@@ -55,7 +55,7 @@ export const attach = (component, container) => {
         state[0] = container.classList.contains("splitter-orientation-vertical") ? 0 : 1;
         state[1] = targetPaneIndex;
         state[2] = getPos(ev);
-        state[3] = getSizeOfPane(targetPaneIndex);
+        state[3] = Math.max(0, getSizeOfPane(targetPaneIndex));
         state[4] = container.dataset.unitOfSize === "percent" ? 1 : 0;
         addEventListenerToSplitter(pointermove, onPointerMove);
         splitter.setPointerCapture(ev.pointerId);
