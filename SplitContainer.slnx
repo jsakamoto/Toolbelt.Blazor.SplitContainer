@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/README/">
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+    <File Path="RELEASE-NOTES.txt" />
+  </Folder>
+  <Folder Name="/SampleApps/">
+    <Project Path="SampleApps/BlazorWasmApp/BlazorWasmApp.csproj" />
+  </Folder>
+  <Project Path="SplitContainer.Test/SplitContainer.Test.csproj" />
+  <Project Path="SplitContainer/SplitContainer.csproj" />
+</Solution>
