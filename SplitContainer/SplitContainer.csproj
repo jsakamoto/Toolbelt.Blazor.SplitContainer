@@ -40,7 +40,8 @@
     <None Include="compilerconfig.json" />
     <None Include="..\.assets\nupkg-icon.png" Pack="true" Visible="false" PackagePath="" />
     <None Include="..\README.md" Visible="false" Pack="true" PackagePath="\" />
-    <None Update="SplitContainer.razor.css" CssScope="b-split-container" />
+    <None Update="V1 (Deprecated)\SplitContainer.razor.css" CssScope="b-split-container" />
+    <None Update="V2\SplitContainer.razor.css" CssScope="b-split-container" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
