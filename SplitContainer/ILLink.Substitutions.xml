@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="Toolbelt.Blazor.SplitContainer">
+    <type feature="Toolbelt.Blazor.SplitContainer.JavaScriptCacheBusting" featurevalue="true" fullname="Toolbelt.Blazor.Splitter.V2.JS">
+      <method signature="System.Boolean CacheBustingEnabled()" body="stub" value="true" />
+    </type>
+    <type feature="Toolbelt.Blazor.SplitContainer.JavaScriptCacheBusting" featurevalue="false" fullname="Toolbelt.Blazor.Splitter.V2.JS">
+      <method signature="System.Boolean CacheBustingEnabled()" body="stub" value="false" />
+    </type>
+  </assembly>
+</linker>
