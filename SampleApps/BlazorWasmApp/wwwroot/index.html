@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blazor Split Container</title>
     <base href="/" />
+    <link rel="preload" id="webassembly" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="css/blazor-ui.css" />
     <link rel="stylesheet" href="BlazorWasmApp.styles.css" />
+    <script type="importmap"></script>
 </head>
 
 <body>
@@ -25,7 +27,7 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-﻿* {
+* {
     --main-content-width: 580px;
 }
 
@@ -7,22 +7,22 @@ header {
     margin: auto auto 32px auto;
 }
 
-    header nav ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: space-around;
-    }
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
 
-        header nav ul li {
-            margin: 0;
-            padding: 0;
-        }
+header nav ul li {
+    margin: 0;
+    padding: 0;
+}
 
-            header nav ul li ::deep a.active {
-                border-bottom: 2px solid var(--links);
-            }
+header nav ul li ::deep a.active {
+    border-bottom: 2px solid var(--links);
+}
 
 main {
     position: relative;
@@ -41,7 +41,10 @@ main {
     position: absolute;
     inset: 0;
     text-align: center;
-    line-height: calc(100cqh - (var(--border-size) * 2));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 ::deep .split-container {
