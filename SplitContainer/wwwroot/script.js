@@ -4,6 +4,8 @@ const pointerup = "pointerup";
 const touchstart = "touchstart";
 const NULL = null;
 export const attach = (component, container) => {
+    if (!container)
+        return { dispose: () => { } };
     const state = [0, 0, 0, 0, 0, false];
     const splitter = container.querySelector(":scope > .spliter-bar");
     const panes = [...container.querySelectorAll(":scope > .pane-of-split-container")];

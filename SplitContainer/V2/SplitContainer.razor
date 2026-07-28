@@ -132,14 +132,22 @@
         return GetSizeText("min-", styleKey, format, minPaneSize, "") + GetSizeText("", styleKey, format, paneSize, "flex:1;");
     }
 
+    private Task? _AfterFirstRenderTask;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await using var module = await JS.ImportScriptAsync(this.JSRuntime);
-            this._ThisRef = DotNetObjectReference.Create(this);
-            this._Handler = await module.InvokeAsync<IJSObjectReference>("attach", this._ThisRef, this._ContainerElementRef);
+            this._AfterFirstRenderTask = this.OnAfterFirstRenderAsync();
+            await this._AfterFirstRenderTask;
         }
+    }
+
+    private async Task OnAfterFirstRenderAsync()
+    {
+        await using var module = await JS.ImportScriptAsync(this.JSRuntime);
+        this._ThisRef = DotNetObjectReference.Create(this);
+        this._Handler = await module.InvokeAsync<IJSObjectReference>("attach", this._ThisRef, this._ContainerElementRef);
     }
 
     [JSInvokable(nameof(UpdateSize)), EditorBrowsable(EditorBrowsableState.Never)]
@@ -151,7 +159,8 @@
 
     public async ValueTask DisposeAsync()
     {
-        if (this._Handler != null)
+        if (this._AfterFirstRenderTask is not null) await this._AfterFirstRenderTask;
+        if (this._Handler is not null)
         {
             try
             {

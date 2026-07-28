@@ -40,7 +40,8 @@ interface DotNetObjectRef {
     invokeMethodAsync(methodName: string, ...args: any[]): Promise<any>
 }
 
-export const attach = (component: DotNetObjectRef, container: HTMLElement) => {
+export const attach = (component: DotNetObjectRef, container: HTMLElement | null): { dispose: () => void } => {
+    if (!container) return { dispose: () => { } };
 
     const state: State = [Direction.Horizontal, 0, 0 as Position, 0 as Size, UnitOfSize.Pixel, false];
 
